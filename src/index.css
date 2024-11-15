@@ -1,7 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.defaultmenu {
+  @apply bg-slate-100 text-black hover:bg-blue-600 hover:text-white
+}
+
+.menu{
+  @apply flex flex-col items-center justify-center hover:bg-slate-100 hover:rounded-md cursor-pointer p-2
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;

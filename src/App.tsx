@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import AppHeader from './pages/AppHeader';
+import AppHeaderHome from './pages/AppHeaderHome';
 
 
 // Lazy load components
@@ -35,11 +36,16 @@ function App() {
 const HeaderWrapper = () => {
   const location = useLocation(); // Now within the Router context
   const isNotificationPage = location.pathname === '/notification';
+  const isOrderPage = location.pathname === '/orderscreen';
 
   return (
     <div className={`container mx-auto ${isNotificationPage ? '' : 'p-4'}`}>
-      {/* Only render AppHeader if we're not on the /notification route */}
-      {!isNotificationPage && <AppHeader />}
+      {/* Conditionally render headers based on the current route */}
+      {isOrderPage ? (
+        <AppHeader />
+      ) : !isNotificationPage ? (
+        <AppHeaderHome />
+      ) : null}
     </div>
   );
 } 
