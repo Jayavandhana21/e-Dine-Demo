@@ -2,6 +2,8 @@ import { Suspense, lazy } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import AppHeader from './pages/AppHeader';
 import AppHeaderHome from './pages/AppHeaderHome';
+import NewComponent from './pages/NewComponent';
+import WelcomePage from "./pages/WelcomePage"
 
 
 // Lazy load components
@@ -11,7 +13,8 @@ const Students = lazy(() => import('./pages/Students'));
 const Allergies = lazy(() => import ('./pages/Allergies'));
 const Topup = lazy(() => import ('./pages/Topup'));
 const TopupWallet =lazy(() => import ('./pages/TopupWallet'));
-const OrderScreen = lazy(() => import ('./pages/OrderScreen'));
+const OrderScreenv1 =lazy(() => import ('./pages/OrderScreenv1'));
+// const OrderScreen = lazy(() => import ('./pages/OrderScreen'));
 
 
 function App() {
@@ -26,7 +29,10 @@ function App() {
         <Route path='/allergies' element ={<Allergies/> } />
         <Route path='/topup' element ={<Topup/>} />
         <Route path='/topupwallet' element={<TopupWallet/> } />
-        <Route path='/orderscreen' element={<OrderScreen/> }/>
+        <Route path='/orderscreen' element={<OrderScreenv1/>}/>
+        <Route path='/login' element={<WelcomePage/>}/>
+        {/* <Route path='/orderscreen' element={<OrderScreen/> }/> */}
+        <Route path='/calender' element={<NewComponent/>}/>
       </Routes>
     </Suspense>
   </Router>
@@ -35,20 +41,26 @@ function App() {
 
 const HeaderWrapper = () => {
   const location = useLocation(); // Now within the Router context
+
+  // Define all the routes where the header should be hidden
   const isNotificationPage = location.pathname === '/notification';
   const isOrderPage = location.pathname === '/orderscreen';
+  const isWelcomePage = location.pathname === '/login';
+  const isNewcomponent =location.pathname === '/calender' // Add new page condition
 
-  return (
-    <div className={`container mx-auto ${isNotificationPage ? '' : 'p-4'}`}>
-      {/* Conditionally render headers based on the current route */}
-      {isOrderPage ? (
-        <AppHeader />
-      ) : !isNotificationPage ? (
-        <AppHeaderHome />
-      ) : null}
-    </div>
-  );
-} 
+   // Combine conditions to decide when to hide the header
+   const shouldHideHeader = isNotificationPage || isWelcomePage || isNewcomponent;
 
+   return (
+     <div className={`container mx-auto ${shouldHideHeader ? '' : 'p-4'}`}>
+       {/* Conditionally render headers based on the current route */}
+       {isOrderPage ? (
+         <AppHeader />
+       ) : !shouldHideHeader ? (
+         <AppHeaderHome />
+       ) : null}
+     </div>
+   );
+ };
 
 export default App;
