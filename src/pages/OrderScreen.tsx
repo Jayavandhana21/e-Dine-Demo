@@ -79,7 +79,7 @@
 //                   <img src={dish.image} alt={dish.name} className='min-w-full'/>
 //                   <div className="flex justify-between">
 //                     <div className='flex flex-col'>
-//                       <p className={` text-sm font-semibold ${selectedDish === dish.id ? 'text-white' : 'text-black'}`}>
+//                       <p className={`text-sm font-semibold ${selectedDish === dish.id ? 'text-white' : 'text-black'}`}>
 //                         {dish.name}
 //                       </p>
 //                       <p

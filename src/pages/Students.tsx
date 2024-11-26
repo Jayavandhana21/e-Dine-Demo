@@ -11,7 +11,7 @@ const handleClick = () => {
 
 const navigate1 = useNavigate();
 const handleClick1 = () => {
-  navigate1('/topup')
+  navigate1('/topupwallet')
 };
 
   const students = [

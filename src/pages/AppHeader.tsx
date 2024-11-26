@@ -1,13 +1,13 @@
-import { useNavigate } from 'react-router-dom';
-import Ellipse from '../assets/Ellipse.png';
-import NotificationIcon from '../assets/Notification.png';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import TextField from '@mui/material/TextField';
 import { FaChevronDown } from 'react-icons/fa6';
-import moment from 'moment';
+import Ellipse from '../assets/Ellipse.png';
+import NotificationIcon from '../assets/Notification.png';
+import TextField from '@mui/material/TextField';
 
 
 interface Week {
@@ -52,6 +52,20 @@ const AppHeader = () => {
 
     const handleDateChange = (newDate: any) => {
         setSelectedDate(newDate);
+    
+        // Calculate the week details for the selected date
+        if (newDate) {
+            const weekStart = moment(newDate).startOf('week'); // Start of the week
+            const weekEnd = moment(newDate).endOf('week'); // End of the week
+            const weekNumber = moment(newDate).week(); // Week number
+    
+            // Update the selectedWeek state with the calculated values
+            setSelectedWeek({
+                number: weekNumber,
+                startDate: weekStart.format('DD MMM'),
+                endDate: weekEnd.format('DD MMM YYYY'),
+            });
+        }
     };
 
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,21 +106,9 @@ const AppHeader = () => {
     return (
         <>
             <div className="flex items-center justify-between mb-4 bg-white ">
-                {/* <div className="relative">
-                    <select
-                        value={selectedWeek?.number}
-                        onChange={handleWeekChange}
-                        className="bg-gray-100 p-3 rounded-md text-gray-700 text-sm font-semibold cursor-pointer">
-                        {futureWeeks.map(week => (
-                            <option key={week.number} value={week.number}>
-                                Week {week.number} - {week.startDate} to {week.endDate}
-                            </option>
-                        ))}
-                    </select>
-                </div> */}
-                <div className="relative inline-block bg-gray-50 p-2 pr-8 rounded-lg mr-4">
+                <div className="relative inline-block bg-gray-50 p-2 pr-8 rounded-lg mr-4 " onClick={() => handleDatePicker('open')}>
                     {/* Display the selected week information */}
-                    <div className="text-left cursor-pointer" onClick={() => handleDatePicker('open')}>
+                    <div className="text-left cursor-pointer" >
                         <p className="text-sm font-semibold text-gray-700">Week {selectedWeek?.number}</p>
                         <p className="text-blue-500 text-sm font-semibold">
                             {selectedWeek?.startDate} - {selectedWeek?.endDate}
@@ -116,18 +118,6 @@ const AppHeader = () => {
                     {/* Dropdown icon */}
                     <FaChevronDown className="absolute bottom-3 left-40 text-blue-500 cursor-pointer" />
 
-                    {/* Week Selector (hidden by default, can be shown as a dropdown menu if desired) */}
-                    {/* <select
-                        value={selectedWeek?.number || ''}
-                        onChange={handleWeekChange}
-                        className="absolute inset-0 opacity-0 cursor-pointer "
-                    >
-                        {futureWeeks.map(week => (
-                            <option key={week.number} value={week.number}>
-                                Week {week.number} - {week.startDate} to {week.endDate}
-                            </option>
-                        ))}
-                    </select> */}
                 </div>
 
                 {/* Conditional Date Picker Popup */}
@@ -162,18 +152,11 @@ const AppHeader = () => {
                    <div key={index} onClick={() => handleDayClick(day)}
                         className={`w-16 h-16 rounded flex flex-col items-center justify-center cursor-pointer bg-slate-100 
                         ${selectedDay && selectedDay.isSame(day, 'day')? '!bg-blue-500 text-white': 'text-gray-700'}`}>
-                        <span className="text-lg">{day.format('dd')[0]}</span>
+                        <span className="text-lg font-semibold">{day.format('dd')[0]}</span>
                         <span className="block text-sm font-medium">{day.format('D')}</span>
                     </div>
                 ))}
             </div>
-            {/* {showDatePicker && <LocalizationProvider dateAdapter={AdapterMoment}>
-                <DatePicker
-                    label="Select a Date"
-                    value={selectedDate}
-                    onChange={handleDateChange}
-                />
-            </LocalizationProvider>} */}
         </>
     )
 };
