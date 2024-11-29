@@ -14,6 +14,11 @@ const handleClick1 = () => {
   navigate1('/topupwallet')
 };
 
+const navigate2 = useNavigate();
+const handleClick2 = () => {
+  navigate2('/orderscreenv1')
+};
+
   const students = [
     {id : 1,name : 'Ajmal',mail : 'Mohideen@lfsolutions.net',school : 'School 1'},
     {id : 2,name : 'Taism',mail : 'ajmal_cutty@yahoo.in',school : 'TEST K'},
@@ -41,13 +46,13 @@ const handleClick1 = () => {
      
 {students.map((student) => (
         <div
-          key={student.id}
-          className="grid grid-cols-12 gap-5 my-2 p-6 relative bg-gray-100 rounded-lg">
-          <div className="col-span-3 flex items-end justify-center bg-neutral-300 rounded-md">
+          key={student.id} 
+          className="grid grid-cols-12 gap-5 my-2 p-6 relative bg-gray-100 rounded-lg cursor-pointer">
+          <div className="col-span-3 flex items-end justify-center bg-neutral-300 rounded-md " onClick={handleClick2}>
             <img src={profile} alt="Profile" />
           </div>
 
-          <div className="col-span-9 flex flex-col p-1">
+          <div className="col-span-9 flex flex-col p-1" onClick={handleClick2}>
             <span className="font-bold text-lg">{student.name}</span>
             <span className="font-display text-sm text-neutral-500 h-6">{student.mail}</span>
             <span className="text-blue-500 text-xs font-semibold">{student.school}</span>
@@ -56,7 +61,7 @@ const handleClick1 = () => {
           <button
             className="absolute right-3 top-4 text-md bg-transparent hover:border-transparent "
             onClick={handleClick}>
-            <img src={edit} alt="Edit" />
+            <img src={edit} alt="Edit"/>
           </button>
         </div>
       ))}

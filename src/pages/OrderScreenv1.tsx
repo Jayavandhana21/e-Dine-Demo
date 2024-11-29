@@ -16,6 +16,7 @@ function OrderScreenv1() {
     const [selectedCategory, setSelectedCategory] = useState('Dinner');
     const [selectedMenuItem, setSelectedMenuItem] = useState('Pizza');
     const [selectedDish, setSelectedDish] = useState<number | null>(null);
+    const [cart, setCart] = useState<number[]>([]); // To track selected dishes in the cart
 
     const categories=['Breakfast','Brunch','Lunch','Dinner','MDinner',"Lunch",'Breakfast']
     const menuItems = [
@@ -32,17 +33,26 @@ function OrderScreenv1() {
         { id:11,name: 'Sides', image: sides },
         { id: 12,name: 'Pizza', image: pizza }
       ];
+      //,portions:["Small","Medium","Large"]
       const dishes = [
         {id: 1,image: dish1,name: "Lamb Chop",cost: "SGD 180.25",label: "spicy",description:"Comes with 6 succulent sashimi-grade Scallops. Served with Japanese noodles, cabbage, onion & egg"},
         {id: 2,image: dish2,name: "Chicken Fried Rice",cost: "SGD 180.25",label: "trending",description:"Comes with 6 succulent sashimi-grade Scallops. Served with Japanese noodles, cabbage, onion & egg"},
         {id: 3,image: dish3,name: "Veg Fried Rice",cost: "SGD 180.25",label: "trending",description:"Comes with 6 succulent sashimi-grade Scallops. Served with Japanese noodles, cabbage, onion & egg"},
         {id: 4,image: dish4,name: "Chicken Manchurian",cost: "SGD 180.25",label: "trending",description:"Comes with 6 succulent sashimi-grade Scallops. Served with Japanese noodles, cabbage, onion & egg"},
         {id: 5,image: dish5,name: "Aloo Fried Rice",cost: "SGD 180.25",label: "",description:"Comes with 6 succulent sashimi-grade Scallops. Served with Japanese noodles, cabbage, onion & egg"},
-        {id: 4,image: dish4,name: "Chicken Manchurian",cost: "SGD 180.25",label: "trending",description:"Comes with 6 succulent sashimi-grade Scallops. Served with Japanese noodles, cabbage, onion & egg"}
+        {id: 6,image: dish4,name: "Chicken Manchurian",cost: "SGD 180.25",label: "trending",description:"Comes with 6 succulent sashimi-grade Scallops. Served with Japanese noodles, cabbage, onion & egg"}
       ];
 
-
-  return (
+      const addDishToCart = (dishId: number) => {
+        if (cart.includes(dishId)) {
+            setCart(cart.filter(id => id !== dishId)); // Remove from cart
+        } else {
+            setCart([...cart, dishId]); // Add to cart
+        }
+    };
+        
+      
+return (
     <div className="p-4">
         {/* {Categories button overflow} */}
         <div className="flex mb-4 overflow-x-auto space-x-4 ">
@@ -70,9 +80,10 @@ function OrderScreenv1() {
         {/* Main menu */}
         <div className='mb-8'>
             {dishes.map((items) => (
-                <div key={items.id} 
-                onClick={() => setSelectedDish(items.id)}
-                className={`flex px-2 gap-4 py-2 my-2 rounded cursor-pointer ${selectedDish === items.id ? 'text-white bg-blue-600' : 'text-black bg-slate-100'}`} >
+                <div
+                key={items.id}
+                onClick={() => addDishToCart(items.id)}
+                className={`flex px-2 gap-4 py-2 my-2 rounded cursor-pointer ${cart.includes(items.id) ? 'text-white bg-blue-600' : 'text-black bg-slate-100'}`}>
                     <img src={items.image}/>
                   <div className='flex flex-col'>
                     <p className='text-sm mb-1 font-semibold'>{items.name}</p>
@@ -83,22 +94,17 @@ function OrderScreenv1() {
             ))}
         </div>
 
-        {/* Fixed Cart Button */}
-        <div className='fixed bottom-0 left-0 right-0 rounded-lg bg-white text-blue-600  mx-4 shadow-md'>
-            
-            <div className='bg-transparent p-3 flex justify-center items-center cursor-pointer font-semibold text-xl'>
-                <HiShoppingCart className='text-xl mr-1'/>
-                <p>View Cart</p>
+         {/* Fixed Cart Button */}
+         <div className='fixed bottom-0 left-0 right-0 bg-white mx-4 p-3 rounded-lg shadow-lg flex justify-between items-center'>
+                <div className="bg-blue-600 text-white rounded-full px-3 py-1 text-sm font-semibold">
+                    {cart.length}
+                </div>
+                <div className='flex items-center text-blue-600 font-semibold text-xl cursor-pointer'>
+                    <HiShoppingCart className='text-2xl mr-2' />
+                    <p>View Cart</p>
+                </div>
             </div>
-        </div>
 
-        {/* Fixed Cart Button */}
-        {/* <div className="fixed bottom-0 left-0 right-0 bg-blue-500 text-white py-4 flex justify-center z-50 shadow-lg">
-                <button
-                    className="px-6 py-3 bg-white text-blue-500 rounded-full font-semibold shadow-md hover:bg-gray-200"
-                    onClick={() => alert('Cart Button Clicked')}>View Cart
-                </button>
-            </div> */}
     </div>
   );
 };

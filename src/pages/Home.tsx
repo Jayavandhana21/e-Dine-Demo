@@ -33,14 +33,13 @@ const Home = () => {
       </button>
 
       <Dialog isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      
         <div className="h-96 w-full max-h-[calc(100vh-100px)] overflow-y-auto ">
-        <div className="flex items-center justify-between p-4 border">
-  <span className="text-center">Select Students</span>
-  {/* <button >Button</button> */}
-  <RxCross2 className="ml-auto cursor-pointer text-black "/>
+          <div className="flex items-center justify-between p-4 border">
+            <span className="text-center">Select Students</span>
+            {/* <button >Button</button> */}
+            <RxCross2 className="ml-auto cursor-pointer text-black " />
           </div>
-          <Students isPopup={true}/> {/* Pass isPopup={true} */}
+          <Students isPopup={true} /> {/* Pass isPopup={true} */}
         </div>
       </Dialog>
     </div>

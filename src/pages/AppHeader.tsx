@@ -7,7 +7,6 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { FaChevronDown } from 'react-icons/fa6';
 import Ellipse from '../assets/Ellipse.png';
 import NotificationIcon from '../assets/Notification.png';
-import TextField from '@mui/material/TextField';
 
 
 interface Week {
@@ -135,7 +134,7 @@ const AppHeader = () => {
                             open={showDatePicker}
                         />
                     </LocalizationProvider>
-                )};
+                )}
 
 
                 {/* Icons */}

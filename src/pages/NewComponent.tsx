@@ -1,5 +1,6 @@
 import { Sheet } from 'react-modal-sheet';
 import { useState } from 'react';
+import OrderScreenv1 from './OrderScreenv1';
 
 function NewComponent() {
   const [isOpen, setOpen] = useState(false);
@@ -12,7 +13,13 @@ function NewComponent() {
             snapPoints={[0.5]}>
            <Sheet.Container>
                 <Sheet.Header />
-                <Sheet.Content>{/*Yoursheetcontentgoeshere*/}</Sheet.Content>
+                <Sheet.Content>
+                  {
+                
+                  
+                  
+                  }
+                  </Sheet.Content>
                 </Sheet.Container>
             <Sheet.Backdrop />
         </Sheet>

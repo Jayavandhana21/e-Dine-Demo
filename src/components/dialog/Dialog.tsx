@@ -46,6 +46,6 @@ interface DialogProps {
       </div>
     </div>
   );
-};
+}
 
 export default Dialog;
