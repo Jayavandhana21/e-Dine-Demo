@@ -6,7 +6,7 @@ const Notification = () => {
   const navigate = useNavigate(); 
 
   const handleClick = () => {
-    navigate('/home');
+    navigate('/login');
     };
     
 

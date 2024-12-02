@@ -43,9 +43,9 @@ export default function TopupWallet() {
       </div>
       <p className="font-bold mt-3">Top Up Method</p>
       <div className="grid grid-cols-12 gap-3 mt-3">
-        <span className="col-span-4 bg-blue-600 rounded text-white flex justify-center p-4">Omise</span>
-        <span className="col-span-4 bg-slate-100 rounded text-black flex justify-center flex-wrap items-center text-center">Online Payment</span>
-        <span className="col-span-4 bg-slate-100 rounded text-black flex justify-center p-4">Cash</span>
+        <span className="col-span-4 bg-blue-600 rounded text-white flex justify-center p-4 cursor-pointer">Omise</span>
+        <span className="col-span-4 bg-slate-100 rounded text-black flex justify-center cursor-pointer flex-wrap items-center text-center">Online Payment</span>
+        <span className="col-span-4 bg-slate-100 rounded text-black flex justify-center cursor-pointer p-4">Cash</span>
        </div>
       <div className="border-b-[#E7E9EC] border-b-2 border-solid pb-6 "/>
       <p className="font-bold mt-3">Payments</p>

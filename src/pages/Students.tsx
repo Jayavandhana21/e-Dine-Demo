@@ -43,12 +43,13 @@ const handleClick2 = () => {
         </div>
       )}
 
-     
-{students.map((student) => (
+     {/* Grid display for students */}
+     <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5'>
+      {students.map((student) => (
         <div
           key={student.id} 
           className="grid grid-cols-12 gap-5 my-2 p-6 relative bg-gray-100 rounded-lg cursor-pointer">
-          <div className="col-span-3 flex items-end justify-center bg-neutral-300 rounded-md " onClick={handleClick2}>
+          <div className="md:hidden col-span-3 flex items-end justify-center bg-neutral-300 rounded-md " onClick={handleClick2}>
             <img src={profile} alt="Profile" />
           </div>
 
@@ -65,6 +66,7 @@ const handleClick2 = () => {
           </button>
         </div>
       ))}
+      </div>
     </div>
   );
 };

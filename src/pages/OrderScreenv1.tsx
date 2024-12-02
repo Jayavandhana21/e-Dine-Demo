@@ -18,20 +18,12 @@ function OrderScreenv1() {
     const [selectedDish, setSelectedDish] = useState<number | null>(null);
     const [cart, setCart] = useState<number[]>([]); // To track selected dishes in the cart
 
-    const categories=['Breakfast','Brunch','Lunch','Dinner','MDinner',"Lunch",'Breakfast']
+    const categories=['Breakfast','Brunch','Lunch','Dinner','MDinner']
     const menuItems = [
         { id: 1,name: 'Pizza', image: pizza },
         { id: 2,name: 'Salad', image: salad },
         { id: 3,name: 'Dessert', image: dessert },
-        { id: 4,name: 'Sides', image: sides },
-        { id: 5,name: 'Salad', image: salad },
-        { id: 6,name: 'Dessert', image: dessert },
-        { id: 7,name: 'Sides', image: sides },
-        { id: 8,name: 'Pizza', image: pizza },
-        { id: 9,name: 'Salad', image: salad },
-        { id: 10,name: 'Dessert', image: dessert },
-        { id:11,name: 'Sides', image: sides },
-        { id: 12,name: 'Pizza', image: pizza }
+        { id: 4,name: 'Sides', image: sides }
       ];
       //,portions:["Small","Medium","Large"]
       const dishes = [

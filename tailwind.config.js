@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['Inter']
+        display: ['Rubik']
       }
     },
   },

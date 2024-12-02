@@ -6,12 +6,14 @@ import NewComponent from './pages/NewComponent';
 import WelcomePage from "./pages/WelcomePage"
 import OrderScreenv2 from './pages/OrderScreenv2';
 import Coupon from './components/dialog/coupon';
+import SelectionPage from './pages/SelectionPage';
+import Login from './pages/Login';
+import Students from './pages/Students';
 
 
 // Lazy load components
 const Home = lazy(() => import('./pages/Home'));
 const Notification = lazy(() => import('./pages/Notification'));
-const Students = lazy(() => import('./pages/Students'));
 const Allergies = lazy(() => import ('./pages/Allergies'));
 const Topup = lazy(() => import ('./pages/Topup'));
 const TopupWallet =lazy(() => import ('./pages/TopupWallet'));
@@ -26,8 +28,7 @@ function App() {
     <HeaderWrapper />  {/* Place the HeaderWrapper inside Router to ensure proper context */}
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route path='/login' element={<WelcomePage/>}/>
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path='/login' element={<Login/>}/>
         <Route path="/home" element={<Home />} />
         <Route path="/notification" element={<Notification />} />
         <Route path='/students' element={<Students/> } />
@@ -39,6 +40,7 @@ function App() {
         <Route path='/calender' element={<NewComponent/>}/>
         <Route path='/coupon' element={<Coupon/>}/>
         <Route path='/tablev1' element={<Tablev1/>}/>
+        <Route path='/selection' element={<SelectionPage/>}/>
       </Routes>
     </Suspense>
   </Router>
@@ -55,10 +57,11 @@ const HeaderWrapper = () => {
   const isWelcomePage = location.pathname === '/login';
   const isNewcomponent =location.pathname === '/calender';
   const isTablev1 =location.pathname === '/tablev1';
+  const isSelectionPage = location.pathname === '/selection';
   const isCoupon =location.pathname === '/coupon' // Add new page condition
 
    // Combine conditions to decide when to hide the header
-   const shouldHideHeader = isNotificationPage || isWelcomePage || isNewcomponent ||isTablev1 || isCoupon;
+   const shouldHideHeader = isNotificationPage || isWelcomePage || isNewcomponent ||isTablev1 || isCoupon || isSelectionPage;
 
    return (
      <div className={`container mx-auto ${shouldHideHeader ? '' : 'p-4'}`}>
