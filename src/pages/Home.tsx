@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Dialog from '../components/dialog/Dialog';
 import Students from './Students';
-import { RxCrossCircled } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 
 

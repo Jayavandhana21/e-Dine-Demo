@@ -1,19 +1,13 @@
 import { Suspense, lazy } from 'react';
-import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 import AppHeaderHome from './pages/AppHeaderHome';
-import Login from './pages/login';
-import Students from './pages/Students';
 
 
 // Lazy load components
 const Home = lazy(() => import('./pages/Home'));
-const Notification = lazy(() => import('./pages/Notification'));
-const Allergies = lazy(() => import('./pages/Allergies'));
-const Topup = lazy(() => import('./pages/Topup'));
-const TopupWallet = lazy(() => import('./pages/TopupWallet'));
 const OrderScreenv1 = lazy(() => import('./pages/OrderScreenv1'));
-const Tablev1 = lazy(() => import('./pages/Tablev1'));
-
+const Students = lazy(() => import('./pages/Students'))
+const Login = lazy(() => import('./pages/Login/login'))
 
 
 function App() {
@@ -24,11 +18,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/notification" element={<Notification />} />
           <Route path='/students' element={<Students />} />
-          <Route path='/allergies' element={<Allergies />} />
-          <Route path='/topup' element={<Topup />} />
-          <Route path='/topupwallet' element={<TopupWallet />} />
           <Route path='/orderscreenv1' element={<OrderScreenv1 />} />
         </Routes>
       </Suspense>
