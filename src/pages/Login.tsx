@@ -1,28 +1,39 @@
 import { TbMailFilled } from 'react-icons/tb';
-import picweb from '../assests1/login page.svg'
+import picweb from '../assests1/login page.svg';
 import { TiLockClosed } from 'react-icons/ti';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/students');
+  };
+
   return (
     <div className="flex flex-col md:flex-row min-h-screen"> {/* Flex container with column for mobile and row for medium and above */}
+      
       {/* Left side image */}
-      <div className="w-full md:w-1/2 lg:w-1/2 lg:px-20 flex justify-center items-center">
-        <img src={picweb} className="w-full h-auto max-w-md md:max-w-full" alt="Login Illustration" />
+      <div className="w-full md:w-1/2 flex justify-center items-center px-4">
+        <img 
+          src={picweb} 
+          className="w-full h-full object-contain pt-4 md:h-auto md:pt-0" 
+          alt="Login Illustration"/>
       </div>
 
       {/* Right side form */}
-      <section className="w-full md:w-1/2 lg:w-1/2 px-4 py-8 flex flex-col justify-center  ">
+      <section className="w-full md:w-1/2 px-4 py-8 flex flex-col justify-center">
         <div className='md:bg-slate-200 md:p-10'>
-        <div className="mb-4">
-                    <h3 className="mb-1 font-bold text-lg">Welcome back!</h3>
-                    <p>Login your account</p>
-                </div>
+          <div className="mb-4">
+            <h3 className="mb-1 font-bold text-lg">Welcome back!</h3>
+            <p>Login to your account</p>
+          </div>
+          
           {/* Username / Email Input */}
           <div className="my-4">
             <label htmlFor="username" className="block text-gray-700 mb-1">
               User name / Mail Id
             </label>
-            <div className="flex items-center border rounded-lg overflow-hidden bg-white">
+            <div className="flex items-center border rounded-lg bg-white">
               <TbMailFilled className="text-xl ml-2 lg:text-2xl" />
               <input
                 type="text"
@@ -60,7 +71,7 @@ const Login = () => {
 
           {/* Login Button */}
           <div className="mb-4">
-            <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">
+            <button className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600" onClick={handleClick}>
               Continue
             </button>
           </div>
@@ -75,7 +86,6 @@ const Login = () => {
             </p>
           </div>
         </div>
-
       </section>
     </div>
   );
