@@ -1,25 +1,24 @@
 import { Suspense, lazy } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import AppHeaderHome from './pages/AppHeaderHome';
+import Header from './components/common/Header';
 
 
-// Lazy load components
-const Home = lazy(() => import('./pages/Home'));
-const OrderScreenv1 = lazy(() => import('./pages/OrderScreenv1'));
-const Students = lazy(() => import('./pages/Students'))
-const Login = lazy(() => import('./pages/Login/login'))
+const Home = lazy(() => import('./pages/home/Home'));
+const OrderScreenv1 = lazy(() => import('./pages/menu/Menu'));
+const Students = lazy(() => import('./pages/students/Students'))
+const Login = lazy(() => import('./pages/login/Login'))
 
 
 function App() {
   return (
     <Router>
-      <HeaderWrapper />  {/* Place the HeaderWrapper inside Router to ensure proper context */}
+      <HeaderWrapper /> 
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path='/login' element={<Login />} />
-          <Route path="/home" element={<Home />} />
+          <Route path='/home' element={<Home />} />
           <Route path='/students' element={<Students />} />
-          <Route path='/orderscreenv1' element={<OrderScreenv1 />} />
+          <Route path='/menu' element={<OrderScreenv1 />} />
         </Routes>
       </Suspense>
     </Router>
@@ -27,14 +26,13 @@ function App() {
 }
 
 const HeaderWrapper = () => {
-  const location = useLocation(); // Now within the Router context
-  // const isNotificationPage = location.pathname === '/notification';
+  const location = useLocation(); 
   const isloginScreen = location.pathname === '/login';
   const hideCalendar = location.pathname === '/students' ? true : false;
 
   return (
     <div className={`min-w-full`}>
-      {!isloginScreen && <AppHeaderHome hideCalendar={hideCalendar}/>}
+      {!isloginScreen && <Header hideCalendar={hideCalendar}/>}
     </div>
   );
 };

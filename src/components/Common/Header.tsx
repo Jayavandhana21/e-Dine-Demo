@@ -1,24 +1,19 @@
-import NotificationIcon from '../assets/Notification.png'
-import Ellipse from '../assets/Ellipse.png'
+import NotificationIcon from '../../assets/Notification.png'
+import Ellipse from '../../assets/Ellipse.png'
 import { useLocation, useNavigate } from 'react-router-dom'
-import WeekCalender from './WeekCalender'
-import WeekDays from './Weekdays'
-import { useEffect, useState } from 'react'
-import moment from 'moment'
-import { generateFutureWeeks, Week } from '../utils/weekUtil'
+import { generateFutureWeeks, Week } from '../../utils/WeekUtil';
+import { useEffect, useState } from 'react';
+import moment from 'moment';
+import WeekCalender from '../../utils/WeekCalender';
+import WeekDays from '../../utils/WeekDays';
 
 
 const AppHeaderHome = ({hideCalendar=false}) => {
 
-  const navigate = useNavigate();
   const location = useLocation();
 
   // Check if the current route is `OrderScreenV1`
-  const isOrderScreen = location.pathname === '/orderscreenv1';
-
-  const handleClick = () => {
-    navigate('/notification');
-  };
+  const isOrderScreen = location.pathname === '/menu';
 
   // Shared state for weeks and selected day
   const futureWeeks = generateFutureWeeks(52);
@@ -63,7 +58,7 @@ const AppHeaderHome = ({hideCalendar=false}) => {
         <div className={`${hideCalendar && isOrderScreen  ? 'col-span-12' : 'col-span-6'} md:col-span-12 flex md:w-full justify-end flex-row`}>
           
           <div className='cursor-pointer pr-4 md:mb-0'>
-            <img src={NotificationIcon} alt='Notification icon' onClick={handleClick} />
+            <img src={NotificationIcon} alt='Notification icon'/>
           </div>
           <div className='flex items-center '>
             <div className='rounded-full p-[3px] border md:mb-3 mr-1'>

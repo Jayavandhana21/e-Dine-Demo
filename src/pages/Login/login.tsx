@@ -1,5 +1,5 @@
 import { TbMailFilled } from 'react-icons/tb';
-import picweb from '../assests1/login page.svg';
+import picweb from '../../assets/login page.svg';
 import { TiLockClosed } from 'react-icons/ti';
 import { useNavigate } from 'react-router-dom';
 
