@@ -1,13 +1,13 @@
 import { Suspense, lazy } from 'react';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
-import Header from './components/common/Header';
+import Header from './components/Common/Header';
 
 
 
-const Home = lazy(() => import('./pages/home/Home'));
+const Home = lazy(() => import('./pages/Home/Home'));
 const OrderScreenv1 = lazy(() => import('./pages/menu/Menu'));
 const Students = lazy(() => import('./pages/Students/Students'))
-const Login = lazy(() => import('./pages/login/Login'))
+const Login = lazy(() => import('./pages/Login/Login'))
 
 
 function App() {
