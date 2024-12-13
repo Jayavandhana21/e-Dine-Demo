@@ -10,14 +10,14 @@ import dish3 from '../../assets/Rectangle 310-3.svg';
 import dish4 from '../../assets/Rectangle 310-4.svg';
 import dish5 from '../../assets/Rectangle 310-6.svg';
 import moment from 'moment';
-import { generateFutureWeeks, Week } from '../../utils/WeekUtil';
+import { generateFutureWeeks, Week } from '../../utils/weekUtil';
 import WeekCalender from '../../utils/WeekCalender';
 import WeekDays from '../../utils/WeekDays';
 
 function OrderScreenv1() {
     const [selectedCategory, setSelectedCategory] = useState('Breakfast');
     const [selectedMenuItem, setSelectedMenuItem] = useState('Pizza');
-    const [selectedDish, setSelectedDish] = useState<number | null>(null);
+    const [, setSelectedDish] = useState<number | null>(null);
     const [cart, setCart] = useState<number[]>([]); // To track selected dishes in the cart
 
     const categories = ['Breakfast', 'Brunch', 'Lunch', 'Dinner', 'MDinner']

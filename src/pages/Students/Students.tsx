@@ -8,7 +8,7 @@ interface StudentsProps {
 }
 
 const Students: React.FC<StudentsProps> = ({ isPopup = false }) =>  {
-  const [selectedStudent, setSelectedStudent] = useState();
+  const [, setSelectedStudent] = useState();
 
 const navigate = useNavigate();
 const handleClick = () => {

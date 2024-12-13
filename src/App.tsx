@@ -3,6 +3,7 @@ import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-route
 import Header from './components/common/Header';
 
 
+
 const Home = lazy(() => import('./pages/home/Home'));
 const OrderScreenv1 = lazy(() => import('./pages/menu/Menu'));
 const Students = lazy(() => import('./pages/students/Students'))
@@ -15,7 +16,7 @@ function App() {
       <HeaderWrapper /> 
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Login />} />
           <Route path='/home' element={<Home />} />
           <Route path='/students' element={<Students />} />
           <Route path='/menu' element={<OrderScreenv1 />} />
@@ -27,7 +28,7 @@ function App() {
 
 const HeaderWrapper = () => {
   const location = useLocation(); 
-  const isloginScreen = location.pathname === '/login';
+  const isloginScreen = location.pathname === '/';
   const hideCalendar = location.pathname === '/students' ? true : false;
 
   return (

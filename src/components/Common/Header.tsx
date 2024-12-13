@@ -1,7 +1,7 @@
 import NotificationIcon from '../../assets/Notification.png'
 import Ellipse from '../../assets/Ellipse.png'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { generateFutureWeeks, Week } from '../../utils/WeekUtil';
+import { useLocation } from 'react-router-dom'
+import { generateFutureWeeks, Week } from '../../utils/weekUtil';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 import WeekCalender from '../../utils/WeekCalender';
