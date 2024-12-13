@@ -6,7 +6,7 @@ import Header from './components/common/Header';
 
 const Home = lazy(() => import('./pages/home/Home'));
 const OrderScreenv1 = lazy(() => import('./pages/menu/Menu'));
-const Students = lazy(() => import('./pages/students/Students'))
+const Students = lazy(() => import('./pages/Students/Students'))
 const Login = lazy(() => import('./pages/login/Login'))
 
 
